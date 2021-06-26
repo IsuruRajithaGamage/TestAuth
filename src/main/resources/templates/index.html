@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Registration and login app</title>
@@ -22,6 +22,12 @@
             </button>
             <a class="navbar-brand" href="#" th:href="@{/}">Registration and Login Module</a>
         </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li sec:authorize="isAuthenticated()"> <a th:href="@{/logout}">Logout</a> </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -29,6 +35,8 @@
 <br>
 <div class="container">
     <h1>Welcome to the home page</h1>
+    Welcome <span sec:authentication="principal.username">User</span>
+
 </div>
 
 </body>
